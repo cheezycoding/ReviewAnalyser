@@ -1,23 +1,37 @@
 # Data Collection Pipeline
 
-This module handles the collection of authentic Singapore restaurant reviews for the ML trustworthy review system.
+This module handles the collection and labeling of authentic Singapore restaurant reviews for the ML trustworthy review system.
 
 ## 📊 Dataset Summary
-- **1,140 reviews** collected from 15 diverse Singapore restaurants
+- **1,140 labeled reviews** collected from 15 diverse Singapore restaurants
+- **LLM-powered labeling** using OpenAI GPT-4o-mini with 4-category classification
 - **100% populated review text** (no empty fields)
 - **284 characters** average review length
 - **Geographic diversity**: Orchard, Marina Bay, Thomson, Dempsey, CBD areas
 - **Cuisine variety**: Chinese, Indian, Italian, Japanese, Cafes, Hawker Centers
+
+### 📈 Label Distribution
+- **Label 0 (AUTHENTIC)**: 913 reviews (80.1%) - Genuine, personal reviews
+- **Label 1 (FAKE)**: 53 reviews (4.6%) - Marketing-style, promotional content
+- **Label 2 (LOW QUALITY)**: 152 reviews (13.3%) - Brief, generic, unhelpful reviews
+- **Label 3 (IRRELEVANT)**: 22 reviews (1.9%) - Off-topic content
 
 ## 🏗️ Structure
 ```
 data-collection/
 ├── data/
 │   ├── restaurants.parquet          # 25 restaurant metadata records
-│   └── reviews_clean.json          # 1,140 clean review records
+│   ├── reviews_clean.json          # 1,140 clean review records
+│   ├── labeled_reviews.json        # 1,140 labeled reviews (DistilBERT format)
+│   ├── seed_examples.json          # Labeling examples and guidelines
+│   └── training_data.json          # Reference training data format
 ├── scripts/
 │   ├── collect_reviews.py          # Main collection orchestrator
-│   └── fetch_restaurants.py        # Places API restaurant discovery
+│   ├── fetch_restaurants.py        # Places API restaurant discovery
+│   ├── label_reviews.py            # Main labeling script (OpenAI)
+│   ├── config.py                   # API configuration and key management
+│   ├── setup_api_key.py            # API key setup utility
+│   └── requirements.txt            # Python dependencies
 ├── google-reviews-scraper/         # Third-party scraper integration
 └── README.md                       # This file
 ```
@@ -29,7 +43,7 @@ data-collection/
 cd data-collection
 python3 -m venv .venv
 source .venv/bin/activate
-pip install pandas pyarrow python-dotenv requests
+pip install pandas pyarrow python-dotenv requests openai google-generativeai tqdm
 ```
 
 ### Collect More Restaurants
@@ -45,6 +59,15 @@ python scripts/fetch_restaurants.py --query "cafes Singapore" --max-restaurants 
 ```bash
 # Collect reviews from all restaurants (max 50 per restaurant)
 python scripts/collect_reviews.py
+```
+
+### Label Reviews (COMPLETED)
+```bash
+# Set up OpenAI API key
+python scripts/setup_api_key.py --api-type openai
+
+# Label reviews using LLM (already completed)
+python scripts/label_reviews.py --batch-size 5
 ```
 
 ## 📋 Data Schema
@@ -81,15 +104,29 @@ python scripts/collect_reviews.py
 }
 ```
 
+### Labeled Review Data (`labeled_reviews.json`) - DistilBERT Format
+```json
+[
+  {
+    "text": "Actual review content",
+    "label": 0
+  },
+  {
+    "text": "Another review content",
+    "label": 1
+  }
+]
+```
+
 ## 🔧 Technical Architecture
 
 ### Data Flow Pipeline
 ```
-Google Places API → Restaurant Metadata → Google Maps URLs → Review Scraper → JSON Output
-     ↓                      ↓                    ↓                ↓              ↓
-1. Text Search         2. Place Details     3. Maps URLs     4. Selenium      5. Merge &
-   Multiple Queries       + Coordinates        Generation       Scraping         Dedupe
-   Restaurant Types       Location Data       CID Extraction   Text Content     Final JSON
+Google Places API → Restaurant Metadata → Google Maps URLs → Review Scraper → JSON Output → LLM Labeling → Labeled Dataset
+     ↓                      ↓                    ↓                ↓              ↓              ↓              ↓
+1. Text Search         2. Place Details     3. Maps URLs     4. Selenium      5. Merge &     6. OpenAI      7. Final
+   Multiple Queries       + Coordinates        Generation       Scraping         Dedupe         GPT-4o-mini    Labeled
+   Restaurant Types       Location Data       CID Extraction   Text Content     Final JSON     Classification Dataset
 ```
 
 ### 1. Restaurant Discovery (`fetch_restaurants.py`)
@@ -108,7 +145,15 @@ Google Places API → Restaurant Metadata → Google Maps URLs → Review Scrape
 - **Temporary Storage**: Individual JSON files per restaurant
 - **Final Merge**: Deduplicates and combines into `reviews_clean.json`
 
-### 3. Scraper Technology (`google-reviews-scraper/`)
+### 3. Review Labeling (`label_reviews.py`) - COMPLETED
+- **LLM Integration**: OpenAI GPT-4o-mini for classification
+- **4-Category Schema**: Authentic (0), Fake (1), Low Quality (2), Irrelevant (3)
+- **Rate Limiting**: 2-second delays between API calls
+- **Incremental Saving**: Batch files to prevent data loss
+- **Resume Functionality**: Can continue from interruptions
+- **Output**: `labeled_reviews.json` in DistilBERT format
+
+### 4. Scraper Technology (`google-reviews-scraper/`)
 - **Selenium WebDriver**: Automated browser interaction
 - **Undetected Chrome**: Bypasses basic bot detection
 - **Dynamic Loading**: Handles infinite scroll and lazy loading
@@ -122,6 +167,8 @@ Google Places API → Restaurant Metadata → Google Maps URLs → Review Scrape
 - **headless**: true (background scraping)
 - **backup_to_json**: true (save results)
 - **rate_limiting**: Conservative delays (5+ seconds between restaurants)
+- **labeling_batch_size**: 5 (reviews per API call)
+- **api_type**: "openai" (GPT-4o-mini for cost efficiency)
 
 ## 🔍 Technical Deep Dive
 
@@ -162,24 +209,42 @@ Google Places API → Restaurant Metadata → Google Maps URLs → Review Scrape
    - Combine into single `reviews_clean.json`
    - Clean up temporary files
 
+### JSON to Labeled Dataset Flow
+1. **Review Loading**: Read `reviews_clean.json` → list of review dictionaries
+2. **LLM Classification**: For each batch of reviews:
+   ```python
+   response = openai.chat.completions.create(
+       model="gpt-4o-mini",
+       messages=[{"role": "user", "content": prompt}],
+       temperature=0.1
+   )
+   ```
+
+3. **Label Processing**: Parse JSON response → extract numeric labels (0-3)
+4. **Batch Saving**: Save incremental results to `labeled_reviews_batch_*.json`
+5. **Final Merge**: Combine all batches → `labeled_reviews.json` in DistilBERT format
+
 ### Key Technologies
 - **Google Places API v1**: Restaurant discovery and metadata
 - **Selenium + Undetected Chrome**: Web scraping with bot detection avoidance
+- **OpenAI GPT-4o-mini**: LLM-powered review classification
 - **Pandas + PyArrow**: Data manipulation and Parquet I/O
 - **JSON**: Review storage format for ML pipeline compatibility
 
 ## ⚠️ Important Notes
 - **Educational Use Only**: This is for hackathon/research purposes
-- **Rate Limiting**: Built-in delays to respect website resources
-- **API Compliance**: Uses official Google Places API where possible
+- **Rate Limiting**: Built-in delays to respect website and API resources
+- **API Compliance**: Uses official Google Places API and OpenAI API
 - **Data Quality**: All reviews verified to have actual text content
+- **Labeling Quality**: High authenticity rate (80.1%) with diverse examples
 
 ## 🎯 Collection Results
 - **Success Rate**: 96% (24/25 restaurants successfully scraped)
 - **Data Quality**: 100% review text population
 - **Diversity Achieved**: 15 unique restaurants across venue types
 - **Geographic Coverage**: Multiple Singapore districts represented
+- **Labeling Complete**: 1,140 reviews classified with 4-category schema
 
 ---
 
-**Status**: ✅ Complete - Ready for ML pipeline development
+**Status**: ✅ Complete - Ready for ML pipeline development with labeled dataset

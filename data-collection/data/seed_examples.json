@@ -4,10 +4,10 @@
     "total_target": 12,
     "completed": 12,
     "categories": {
-      "authentic": {"target": 3, "completed": 3},
-      "fake": {"target": 3, "completed": 3},
-      "low_quality": {"target": 3, "completed": 3},
-      "irrelevant": {"target": 3, "completed": 3}
+      "0_authentic": {"target": 3, "completed": 3},
+      "1_fake": {"target": 3, "completed": 3},
+      "2_low_quality": {"target": 3, "completed": 3},
+      "3_irrelevant": {"target": 3, "completed": 3}
     },
     "last_updated": "2024-12-01",
     "note": "Removed spam/promotional category - not found in actual dataset"
@@ -15,7 +15,7 @@
   "seed_examples": [
     {
       "id": 1,
-      "label": "fake",
+      "label": 1,
       "restaurant_name": "Burnt Ends",
       "review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tKSFdIQmxhUzFvY1ZoaVVGVk5YMUUzTlVSSU4yYxAB",
       "review_text": "Stepping into this restaurant immediately sets the tone for a refined yet warmly inviting dining experience. The high ceilings, exposed beams, and striking vertical pillars give the space a grand industrial-chic feel, complemented by warm amber lighting and neatly set tables. The open kitchen allows diners to watch the chefs in action, adding an engaging, lively atmosphere.\n\nThe food presentation is elegant and minimalist, allowing the quality of the ingredients to shine. The slices of beef are cooked to a perfect medium-rare, with a delicate char on the outside and a juicy, tender center, paired simply with fresh greens for a clean, balanced plate. Another standout is the richly glazed beef-topped toast, crowned with tart pickles and fresh chives—a harmonious combination of sweet, tangy, and savory notes.\n\nThe playful touch of charred marshmallows on skewers hints at the restaurant's creative flair, blending nostalgic comfort with gourmet technique.\n\nService is very attentive and professional, with the chefs clearly passionate about their craft. Overall, this is a place that blends sophisticated dining with a relaxed ambience, making it perfect for both special occasions and indulgent casual meals.",
@@ -23,7 +23,7 @@
     },
     {
       "id": 2,
-      "label": "authentic",
+      "label": 0,
       "restaurant_name": "Burnt Ends",
       "review_id": "ChZDSUhNMG9nS0VMM2huZEdBc29MbE5nEAE",
       "review_text": "Finally after months of waiting, secured a meal in this popular restaurant..\n\nBurnt ends, actually served beyond steak as their signature..but smoked flavours in all their cuisine.\n\nGrissini, crisp breadsticks, paired with taramasalata, a traditional Greek dip made from salted cod roe, olive oil, lemon juice, and crispy flat bread was refreshing great appetising starter.\n\nQuail egg smoked giving an explosive smoky flavour on one bite, caviar was a great compliment to the texture and brings freshness to the smokeness.\n\nJamaica wings or rather a halved wing, looks too small for me, but it took me 3 bites , hahaha. Is because I totally loved that flavour and slowly tasted the wonderful wings flavour.\n\nEel and bone marrow, like the photos shows..seems normal like a unagi sushi , but this is done smoked flavour glazed in the special miso sauce that I consider 5 🌟 against any omakase japanese resturant.   The bone marrow was hidden as a base that did not really over power the eel.\n\nMain course was WA Marron grill to perfection, like medium rare..that is preserved the softness of the body, the glazed sauce was amazing don't even remember what was it.\n\nFinally the Australian steak, it was ok, lack the punch of a wow for a steak\n\nConcluded with smoked lava cake, this is totally amazingly different with a strong smoky smoke in ur mouth,  of course it has to be eaten with the ice cream.\n\nI am thrilled by the different presentation of course that resembles smoky identity yet letting each element of food be amazingly created to refine texture and taste.",
@@ -31,7 +31,7 @@
     },
     {
       "id": 3,
-      "label": "authentic",
+      "label": 0,
       "restaurant_name": "My Awesome Cafe",
       "review_id": "ChdDSUhNMG9nS0VJQ0FnSUNuOTVHV2tRRRAB",
       "review_text": "So many interesting, delicious food and drink options! Healthy focus! Unique in their own way! Burger, soft bread!  Staff and boss v. friendly! Had insightful conversations with them. Will be back with friends, to try their menu again! ;)",
@@ -39,7 +39,7 @@
     },
     {
       "id": 4,
-      "label": "low_quality",
+      "label": 2,
       "restaurant_name": "Our Village : Best Authentic Indian & Mexican Restaurant",
       "review_id": "unknown_id",
       "review_text": "Best indian food in boat quay",
@@ -47,7 +47,7 @@
     },
     {
       "id": 5,
-      "label": "low_quality",
+      "label": 2,
       "restaurant_name": "Adam Road Food Centre",
       "review_id": "unknown_id_2",
       "review_text": "Great pork prawn noodle",
@@ -55,7 +55,7 @@
     },
     {
       "id": 6,
-      "label": "low_quality", 
+      "label": 2, 
       "restaurant_name": "Adam Road Food Centre",
       "review_id": "unknown_id_3",
       "review_text": "Good food, hot place.",
@@ -63,7 +63,7 @@
     },
     {
       "id": 7,
-      "label": "irrelevant",
+      "label": 3,
       "restaurant_name": "Sample Restaurant",
       "review_id": "synthetic_irrelevant_1",
       "review_text": "The delivery guy was 30 minutes late and I had to call the delivery company twice. My apartment is hard to find and the GPS doesn't work properly in this area. The driver didn't speak English well. Very frustrating experience with the delivery service.",
@@ -71,7 +71,7 @@
     },
     {
       "id": 8,
-      "label": "irrelevant", 
+      "label": 3, 
       "restaurant_name": "Sample Restaurant",
       "review_id": "synthetic_irrelevant_2",
       "review_text": "I drove around for 20 minutes looking for parking. The construction in this area is terrible and there's nowhere to park. The building is old and needs renovation. Also, my cousin's wedding was last weekend and we had such a great time. Weather has been so hot lately.",
@@ -79,7 +79,7 @@
     },
     {
       "id": 9,
-      "label": "irrelevant",
+      "label": 3,
       "restaurant_name": "Sample Restaurant", 
       "review_id": "synthetic_irrelevant_3",
       "review_text": "This place used to be a hardware store when I was growing up in this neighborhood. My childhood friend John used to live around here. The whole area has changed so much over the years. I remember when there was a playground where the shopping mall is now.",
@@ -87,7 +87,7 @@
     },
     {
       "id": 10,
-      "label": "authentic",
+      "label": 0,
       "restaurant_name": "Burnt Ends", 
       "review_id": "ChZDSUhNMG9nS0VKQ0FnSUR4dTZmOVdnEAE",
       "review_text": "I showed up without a reservation and scored a spot at the bar. What a lucky break. The bartender was incredibly helpful. I wish I'd gotten his name. He improvised a cocktail that I shared with him, and blew it away. His take on the chocolate negroni was so good, I asked him to write down his recipe. Then of course, as you probably know, if you're looking at this place - the food was amazing. The flavors packed into small bites put this on my map for a much longer, proper sit down next time I'm in Singapore. This was a highlight on my trip and has left an indelible impression on my palate. If you like savory, flavorful, and complex tasting food and drinks to match be sure to put this restaurant on your itinerary.",
@@ -95,7 +95,7 @@
     },
     {
       "id": 11,
-      "label": "fake",
+      "label": 1,
       "restaurant_name": "Burnt Ends",
       "review_id": "ChZDSUhNMG9nS0VKQ0FnSURuLTZPaGNREAE", 
       "review_text": "Every visit to Burnt Ends is an incredible experience that never fails to impress! This restaurant is always a highlight of my travels and often the main reason for passing through Singapore. Dave and his team consistently deliver exceptional food that delights the taste buds, paired with impeccable service that makes you feel welcomed and valued. From the moment you step in, the atmosphere is vibrant, and the attention to detail is evident in every dish. Each visit leaves me eagerly anticipating the next, as they continuously raise the bar. If you're in Singapore, Burnt Ends is a must-visit destination for an unforgettable dining experience!",
@@ -103,7 +103,7 @@
     },
     {
       "id": 12,
-      "label": "fake",
+      "label": 1,
       "restaurant_name": "My Awesome Cafe",
       "review_id": "ChdDSUhNMG9nS0VJQ0FnSUR6dVB1QnFRRRAB",
       "review_text": "I had the most incredible dining experience at this restaurant! From the moment I walked in, I was welcomed by a warm and friendly staff. The ambiance was enchanting, with soft lighting and tasteful decor that set the perfect mood for the evening. The menu was a culinary masterpiece, offering a wide range of mouthwatering dishes that catered to various tastes. I started with the recommendation and it was an explosion of flavors that left me craving more. their signature dish was nothing short of perfection. Every bite was a delightful journey for my taste buds. The service was impeccable; our server was knowledgeable about the menu, attentive, and made excellent recommendations.",
