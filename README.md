@@ -22,8 +22,6 @@ A comprehensive AI-powered system for analyzing and classifying Google Maps revi
 </div>
 -->
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## 🏗️ Project Architecture
 
 ```
@@ -159,8 +157,6 @@ Labeled JSON data follows DistilBERT input format:
 }
 ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ---
 
 ## 🔧 B. Reviews-Two Backend
@@ -218,8 +214,6 @@ Labeled JSON data follows DistilBERT input format:
 
 **Live Backend Service**: https://reviewstwo-backend-370116201512.asia-southeast1.run.app
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ---
 
 ## 🎨 Frontend Application
@@ -237,8 +231,6 @@ Labeled JSON data follows DistilBERT input format:
 - **Real-time Analysis**: Live processing with progress indicators
 - **Results Display**: Comprehensive review quality breakdown
 - **Responsive Design**: Mobile and desktop optimized interface
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 
@@ -281,8 +273,6 @@ pip install -r requirements.txt
 uvicorn main:app --reload --host 0.0.0.0 --port 8001
 ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ---
 
 ## 📊 Use Cases & Applications
@@ -302,8 +292,6 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8001
 - **Automated Moderation**: Reduce manual review workload
 - **Quality Metrics**: Track review quality over time
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ---
 
 ## 🔒 Security & Performance
@@ -320,8 +308,6 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8001
 - **Scalability**: Auto-scaling on Google Cloud Run
 - **Reliability**: 99.9% uptime with health monitoring
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ---
 
 ## 🤝 Contributing
@@ -331,8 +317,6 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8001
 3. **Model Architecture**: Experiment with different transformer models
 4. **Data Augmentation**: Implement techniques for minority classes
 5. **Frontend Enhancements**: Improve user experience and accessibility
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 
@@ -347,8 +331,6 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8001
 ### **Frontend:**
 - Next.js, TypeScript, Tailwind CSS, shadcn/ui
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ---
 
 ## 🔮 Future Enhancements
@@ -358,8 +340,6 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8001
 - **Advanced Analytics**: Review sentiment trends and patterns
 - **Mobile Applications**: Native iOS and Android apps
 - **Enterprise Features**: Multi-tenant support and advanced reporting
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 
@@ -375,8 +355,6 @@ This project is part of the TikTok TechJam review quality assessment system.
 
 For questions or support, please refer to the individual component READMEs or test the live APIs directly.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## 📝 Citation
 
 **UCTopic: Unsupervised Contrastive Learning for Phrase Representations and Topic Mining**  
@@ -388,8 +366,6 @@ Annual Meeting of the Association for Computational Linguistics (ACL), 2022
 An Yan, Zhankui He, Jiacheng Li, Tianyang Zhang, Julian McAuley  
 The 46th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR), 2023  
 [PDF](https://dl.acm.org/doi/pdf/10.1145/3539618.3592012)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/your-username/TikTok-TechJam.svg?style=for-the-badge
