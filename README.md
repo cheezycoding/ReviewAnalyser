@@ -1,24 +1,5 @@
 # TikTok TechJam - reviews² (Google Maps Review Quality Assessment)
 
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <h3 align="center">reviews²</h3>
-  <p align="center">
-    AI-powered Google Maps review quality assessment system
-    <br />
-    <a href="https://reviewstwo.vercel.app/"><strong>Live Demo »</strong></a>
-    <br />
-    <br />
-    <a href="https://reviewstwo.vercel.app/">View Demo</a>
-    &middot;
-    <a href="https://github.com/your-username/TikTok-TechJam/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    &middot;
-    <a href="https://github.com/your-username/TikTok-TechJam/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
-  </p>
-</div>
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
