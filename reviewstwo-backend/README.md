@@ -2,6 +2,8 @@
 
 A clean, production-ready backend API for Google Maps review analysis with AI-powered classification and LLM insights.
 
+**🌐 Live API**: https://reviewstwo-backend-370116201512.asia-southeast1.run.app
+
 ## 🚀 Current Status: **PRODUCTION READY**
 
 **✅ What's Working:**
@@ -129,10 +131,16 @@ apify-client==2.0.0
 
 ### Test the API
 ```bash
-# Health check
-curl http://localhost:8001/health
+# Health check (Live)
+curl https://reviewstwo-backend-370116201512.asia-southeast1.run.app/health
 
-# Test analysis
+# Test analysis (Live)
+curl -X POST "https://reviewstwo-backend-370116201512.asia-southeast1.run.app/api/analyze" \
+  -H "Content-Type: application/json" \
+  -d '{"gmaps_url": "https://maps.google.com/place/...", "max_reviews": 5}'
+
+# Local testing
+curl http://localhost:8001/health
 curl -X POST "http://localhost:8001/api/analyze" \
   -H "Content-Type: application/json" \
   -d '{"gmaps_url": "https://maps.google.com/place/...", "max_reviews": 5}'
@@ -176,22 +184,32 @@ curl -X POST "http://localhost:8001/api/analyze" \
 
 ## 🚀 Deployment
 
-### Docker
+### GCP Cloud Run (Production)
+**🌐 Live Service**: https://reviewstwo-backend-370116201512.asia-southeast1.run.app
+
+**Deploy with source:**
 ```bash
+gcloud run deploy reviewstwo-backend --source . --region asia-southeast1 --allow-unauthenticated --port 8000 --memory 1Gi --cpu 1 --max-instances 10
+```
+
+### Docker (Local/Other Cloud)
+```bash
+# Build image
 docker build -t reviewstwo-backend .
-docker run -p 8001:8001 --env-file .env reviewstwo-backend
+
+# Run with environment variables
+docker run -p 8000:8000 \
+  -e APIFY_API_KEY=your_key \
+  -e OPENAI_API_KEY=your_key \
+  reviewstwo-backend
 ```
 
-### Docker Compose
-```bash
-docker-compose up -d
-```
-
-### Production
-- Use production WSGI server (Gunicorn)
-- Set proper environment variables
-- Enable logging and monitoring
-- Consider Redis for rate limiting
+### Production Considerations
+- **GCP Cloud Run**: Auto-scaling, pay-per-use, managed SSL
+- **Environment Variables**: Set securely in Cloud Run console
+- **Memory**: 1GB recommended for LLM processing
+- **CPU**: 1 vCPU sufficient for most workloads
+- **Scaling**: 0-10 instances based on demand
 
 ## 🔒 Security Features
 
