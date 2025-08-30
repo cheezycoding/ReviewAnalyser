@@ -1,26 +1,13 @@
 # TikTok TechJam - reviews² (Google Maps Review Quality Assessment)
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="#project-summary">Project Summary</a></li>
-    <li><a href="#live-demo">Live Demo</a></li>
-    <li><a href="#project-architecture">Project Architecture</a></li>
-    <li><a href="#repository-structure">Repository Structure</a></li>
-    <li><a href="#classification-model">Classification Model</a></li>
-    <li><a href="#backend-api">Backend API</a></li>
-    <li><a href="#frontend-application">Frontend Application</a></li>
-    <li><a href="#quick-start">Quick Start</a></li>
-    <li><a href="#use-cases">Use Cases & Applications</a></li>
-    <li><a href="#security-performance">Security & Performance</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#dependencies">Dependencies</a></li>
-    <li><a href="#future-enhancements">Future Enhancements</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#citation">Citation</a></li>
-  </ol>
-</details>
+<!-- SCREENSHOT SECTION -->
+## 📸 Screenshots
+
+<div align="center">
+  <img src="images/Screenshot 2025-08-30 at 6.31.02 PM.png" alt="reviews² Frontend Application Interface" width="800">
+  <p><em>Main interface of reviews² - AI-powered Google Maps Review Quality Assessment system</em></p>
+</div>
+
 
 ## 📋 Project Summary
 
@@ -30,13 +17,6 @@ A comprehensive AI-powered system for analyzing and classifying Google Maps revi
 
 **Frontend Application**: [https://reviewstwo.vercel.app/](https://reviewstwo.vercel.app/)
 
-<!-- SCREENSHOT SECTION -->
-## 📸 Screenshots
-
-<div align="center">
-  <img src="images/Screenshot 2025-08-30 at 6.31.02 PM.png" alt="reviews² Frontend Application Interface" width="800">
-  <p><em>Main interface of reviews² - AI-powered Google Maps Review Quality Assessment system</em></p>
-</div>
 
 <!-- To add more screenshots, use this format:
 <div align="center">
