@@ -194,6 +194,19 @@ Thumbs.db
 *.hdf5
 *.model
 
+# Large model directories (exclude from Git)
+classification-model/ml-pipeline/models/
+classification-model/inference-api/model/
+classification-model/inference-api/venv/
+classification-model/.venv/
+
+# Model checkpoints and large files
+*.safetensors
+*.bin
+*.pt
+*.pth
+checkpoint-*/
+
 # API keys and secrets
 secrets.json
 config.json
