@@ -13,7 +13,13 @@ A machine learning system that automatically classifies Google reviews to identi
 
 ## 🎯 Overview
 
-This system uses DistilBERT to classify Google reviews into four quality categories:
+This system uses DistilBERT to classify restaurant reviews into four categories for **policy enforcement**:
+
+### **Policy Enforcement Categories:**
+- **Authentic Reviews** (92.5% F1): Genuine customer experiences - **ALLOWED**
+- **Fake Reviews** (91.9% F1): Computer-generated/fraudulent content - **BLOCKED**
+- **Low Quality Reviews** (89.2% F1): Poorly written/unhelpful content - **FLAGGED FOR REVIEW**
+- **Irrelevant Reviews** (35.7% F1): Off-topic content - **REMOVED**
 
 | Category | Description | Detection Rate |
 |----------|-------------|----------------|
@@ -96,6 +102,72 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 gcloud run deploy review-classifier-api --source . --platform managed --region asia-southeast1 --allow-unauthenticated
 ```
 
+## 🔄 How to Reproduce Results
+
+### **Step 1: Data Collection & Preprocessing**
+```bash
+cd classification-model/data-collection
+
+# Install dependencies
+pip install -r scripts/requirements.txt
+
+# Collect Google reviews (requires API key)
+python scripts/collect_reviews.py
+
+# Process and combine datasets
+python scripts/combine_datasets.py
+```
+
+### **Step 2: Model Training**
+```bash
+cd classification-model/ml-pipeline
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Train the enhanced model
+python train_distilbert_enhanced.py
+
+# Expected results:
+# - Test Accuracy: ~90.1%
+# - Macro F1: ~77.3%
+# - Fake Review F1: ~91.9%
+```
+
+### **Step 3: Model Evaluation**
+```bash
+# Test the trained model
+python test_model.py
+
+# Expected output:
+# ✅ Model loaded successfully
+# ✅ Prediction successful!
+#    Sentiment: LABEL_0 (Authentic)
+#    Confidence: 0.9967
+```
+
+### **Step 4: API Deployment**
+```bash
+cd classification-model/inference-api
+
+# Set up environment
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# Test locally
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+# Deploy to Google Cloud Run
+gcloud run deploy review-classifier-api --source . --platform managed --region asia-southeast1 --allow-unauthenticated
+```
+
+### **Expected Performance Metrics:**
+- **Overall Accuracy**: 90.1%
+- **Fake Review Detection**: 91.9% F1 score
+- **Authentic Review Detection**: 92.5% F1 score
+- **Low Quality Detection**: 89.2% F1 score
+
 ## 📊 Performance Metrics
 
 ### Enhanced Model (Latest)
@@ -137,13 +209,19 @@ gcloud run deploy review-classifier-api --source . --platform managed --region a
 - **Kaggle Fake Reviews**: 474 computer-generated reviews for training
 - **Labeling**: Manual annotation by domain experts
 
-## 🎯 Use Cases
+## 🎯 Use Cases & Policy Enforcement
 
-1. **Review Platform Moderation**: Automatically filter low-quality content
-2. **Fake Review Detection**: Identify fraudulent or AI-generated reviews (91.9% F1 score)
-3. **Content Quality Assessment**: Rate review helpfulness
-4. **Data Cleaning**: Remove irrelevant content from review datasets
-5. **API Integration**: Use the live endpoint for real-time classification
+### **Content Moderation Policies:**
+1. **Fake Review Detection** (91.9% F1): **BLOCK** computer-generated/fraudulent reviews
+2. **Authentic Review Validation** (92.5% F1): **ALLOW** genuine customer experiences
+3. **Low Quality Filtering** (89.2% F1): **FLAG** poorly written/unhelpful content for review
+4. **Irrelevant Content Removal** (35.7% F1): **REMOVE** off-topic content
+
+### **Platform Integration:**
+- **Google Maps Review Moderation**: Automatically filter low-quality content
+- **Review Platform Quality Control**: Maintain review integrity and user trust
+- **Real-time API Integration**: Use the live endpoint for instant classification
+- **Data Cleaning**: Remove irrelevant content from review datasets
 
 ## 🔧 Technical Details
 
