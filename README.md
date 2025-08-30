@@ -4,7 +4,7 @@
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="images/Screenshot%202025-08-30%20at%206.31.02%20PM.png" alt="reviews² Frontend Application Interface" width="800">
+  <img src="images/frontend-screenshot.png" alt="reviews² Frontend Application Interface" width="800">
   <p><em>Main interface of reviews² - AI-powered Google Maps Review Quality Assessment system</em></p>
 </div>
 
