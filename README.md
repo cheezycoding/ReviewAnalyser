@@ -1,5 +1,46 @@
 # TikTok TechJam - reviews² (Google Maps Review Quality Assessment)
 
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <h3 align="center">reviews²</h3>
+  <p align="center">
+    AI-powered Google Maps review quality assessment system
+    <br />
+    <a href="https://reviewstwo.vercel.app/"><strong>Live Demo »</strong></a>
+    <br />
+    <br />
+    <a href="https://reviewstwo.vercel.app/">View Demo</a>
+    &middot;
+    <a href="https://github.com/your-username/TikTok-TechJam/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    &middot;
+    <a href="https://github.com/your-username/TikTok-TechJam/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#project-summary">Project Summary</a></li>
+    <li><a href="#live-demo">Live Demo</a></li>
+    <li><a href="#project-architecture">Project Architecture</a></li>
+    <li><a href="#repository-structure">Repository Structure</a></li>
+    <li><a href="#classification-model">Classification Model</a></li>
+    <li><a href="#backend-api">Backend API</a></li>
+    <li><a href="#frontend-application">Frontend Application</a></li>
+    <li><a href="#quick-start">Quick Start</a></li>
+    <li><a href="#use-cases">Use Cases & Applications</a></li>
+    <li><a href="#security-performance">Security & Performance</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#dependencies">Dependencies</a></li>
+    <li><a href="#future-enhancements">Future Enhancements</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#citation">Citation</a></li>
+  </ol>
+</details>
+
 ## 📋 Project Summary
 
 A comprehensive AI-powered system for analyzing and classifying Google Maps reviews to identify authentic, fake, low-quality, and irrelevant content. This project combines machine learning classification with LLM analysis to provide intelligent review quality assessment. The system features a DistilBERT-based classifier achieving 90.1% accuracy across four quality categories, real-time Google Maps review scraping via Apify integration, and GPT-4-powered analysis for authentic reviews only. It includes a production-ready web application for consumers to filter out fake reviews and get adjusted ratings! 
@@ -7,6 +48,23 @@ A comprehensive AI-powered system for analyzing and classifying Google Maps revi
 ## 🌐 Live Demo
 
 **Frontend Application**: [https://reviewstwo.vercel.app/](https://reviewstwo.vercel.app/)
+
+<!-- SCREENSHOT SECTION -->
+## 📸 Screenshots
+
+<div align="center">
+  <img src="images/Screenshot 2025-08-30 at 6.31.02 PM.png" alt="reviews² Frontend Application Interface" width="800">
+  <p><em>Main interface of reviews² - AI-powered Google Maps Review Quality Assessment system</em></p>
+</div>
+
+<!-- To add more screenshots, use this format:
+<div align="center">
+  <img src="images/feature-screenshot.png" alt="Feature Screenshot" width="400">
+  <p><em>Description of the feature</em></p>
+</div>
+-->
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🏗️ Project Architecture
 
@@ -143,6 +201,8 @@ Labeled JSON data follows DistilBERT input format:
 }
 ```
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ---
 
 ## 🔧 B. Reviews-Two Backend
@@ -200,6 +260,8 @@ Labeled JSON data follows DistilBERT input format:
 
 **Live Backend Service**: https://reviewstwo-backend-370116201512.asia-southeast1.run.app
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ---
 
 ## 🎨 Frontend Application
@@ -217,6 +279,8 @@ Labeled JSON data follows DistilBERT input format:
 - **Real-time Analysis**: Live processing with progress indicators
 - **Results Display**: Comprehensive review quality breakdown
 - **Responsive Design**: Mobile and desktop optimized interface
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 
@@ -259,6 +323,8 @@ pip install -r requirements.txt
 uvicorn main:app --reload --host 0.0.0.0 --port 8001
 ```
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ---
 
 ## 📊 Use Cases & Applications
@@ -278,6 +344,8 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8001
 - **Automated Moderation**: Reduce manual review workload
 - **Quality Metrics**: Track review quality over time
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ---
 
 ## 🔒 Security & Performance
@@ -294,6 +362,8 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8001
 - **Scalability**: Auto-scaling on Google Cloud Run
 - **Reliability**: 99.9% uptime with health monitoring
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ---
 
 ## 🤝 Contributing
@@ -303,6 +373,8 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8001
 3. **Model Architecture**: Experiment with different transformer models
 4. **Data Augmentation**: Implement techniques for minority classes
 5. **Frontend Enhancements**: Improve user experience and accessibility
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 
@@ -317,6 +389,8 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8001
 ### **Frontend:**
 - Next.js, TypeScript, Tailwind CSS, shadcn/ui
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ---
 
 ## 🔮 Future Enhancements
@@ -326,6 +400,8 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8001
 - **Advanced Analytics**: Review sentiment trends and patterns
 - **Mobile Applications**: Native iOS and Android apps
 - **Enterprise Features**: Multi-tenant support and advanced reporting
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 
@@ -341,6 +417,8 @@ This project is part of the TikTok TechJam review quality assessment system.
 
 For questions or support, please refer to the individual component READMEs or test the live APIs directly.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## 📝 Citation
 
 **UCTopic: Unsupervised Contrastive Learning for Phrase Representations and Topic Mining**  
@@ -352,4 +430,20 @@ Annual Meeting of the Association for Computational Linguistics (ACL), 2022
 An Yan, Zhankui He, Jiacheng Li, Tianyang Zhang, Julian McAuley  
 The 46th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR), 2023  
 [PDF](https://dl.acm.org/doi/pdf/10.1145/3539618.3592012)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[contributors-shield]: https://img.shields.io/github/contributors/your-username/TikTok-TechJam.svg?style=for-the-badge
+[contributors-url]: https://github.com/your-username/TikTok-TechJam/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/your-username/TikTok-TechJam.svg?style=for-the-badge
+[forks-url]: https://github.com/your-username/TikTok-TechJam/network/members
+[stars-shield]: https://img.shields.io/github/stars/your-username/TikTok-TechJam.svg?style=for-the-badge
+[stars-url]: https://github.com/your-username/TikTok-TechJam/stargazers
+[issues-shield]: https://img.shields.io/github/issues/your-username/TikTok-TechJam.svg?style=for-the-badge
+[issues-url]: https://github.com/your-username/TikTok-TechJam/issues
+[license-shield]: https://img.shields.io/github/license/your-username/TikTok-TechJam.svg?style=for-the-badge
+[license-url]: https://github.com/your-username/TikTok-TechJam/blob/master/LICENSE.txt
+[demo-shield]: https://img.shields.io/badge/Live%20Demo-Reviewstwo-blue?style=for-the-badge&logo=vercel
+[demo-url]: https://reviewstwo.vercel.app/
 
