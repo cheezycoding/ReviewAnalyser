@@ -1,8 +1,6 @@
 # TikTok TechJam - reviews² (Google Maps Review Quality Assessment)
 
 <!-- SCREENSHOT SECTION -->
-## 📸 Screenshots
-
 <div align="center">
   <img src="images/frontend-screenshot.png" alt="reviews² Frontend Application Interface" width="800">
   <p><em>Main interface of reviews² - AI-powered Google Maps Review Quality Assessment system</em></p>
